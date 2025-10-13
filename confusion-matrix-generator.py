@@ -44,10 +44,10 @@ def read_excel(input_path: Path) -> pd.DataFrame:
     """Reads the Excel input file and handles errors gracefully."""
     try:
         df = pd.read_excel(input_path)
-        print(f"✅ Successfully read input: {input_path.name}")
+        print(f"Successfully read input: {input_path.name}")
         return df
     except Exception as e:
-        print(f"❌ Error reading file: {e}")
+        print(f"Error reading file: {e}")
         sys.exit(1)
 
 
@@ -89,7 +89,7 @@ def count_classifiers(df: pd.DataFrame) -> pd.DataFrame:
     present_cols = []
     for k, v in col_map.items():
         if v is None:
-            print(f"⚠️ Warning: Column '{k}' not found in Excel. Skipping.")
+            print(f"Warning: Column '{k}' not found in Excel. Skipping.")
             df[k] = ""
         else:
             df[k] = df[v].fillna("").astype(str).str.lower()
@@ -104,7 +104,7 @@ def count_classifiers(df: pd.DataFrame) -> pd.DataFrame:
         all_classifiers.update(classifiers_list[classifiers_list != ""].unique())
 
     CLASSIFIERS = sorted(list(all_classifiers))
-    print(f"✅ Found {len(CLASSIFIERS)} unique classifiers.")
+    print(f"Found {len(CLASSIFIERS)} unique classifiers.")
 
     # Build result confusion matrix rows
     result_rows = []
@@ -165,7 +165,7 @@ def write_excel_with_formulas(df: pd.DataFrame, input_df: pd.DataFrame, output_p
                 cell.alignment = Alignment(horizontal="center", vertical="center")
 
     wb.save(output_path)
-    print(f"📂 Output file created: {output_path}")
+    print(f"Output file created: {output_path}")
 
 
 # ------------------------------------------------------
