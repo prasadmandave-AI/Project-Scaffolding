@@ -2,7 +2,7 @@
 Python project that generates a confusion matrix from Excel input files.
 
 -------------------------------------------------------------------------------------------------------------------
-How to Run the Project
+# How to Run the Project
 -------------------------------------------------------------------------------------------------------------------
 # Ensure all necessary files (Python script and input/output Excel files) are located in the same project directory.
 
