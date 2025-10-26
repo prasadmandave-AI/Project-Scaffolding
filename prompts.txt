@@ -1,0 +1,62 @@
+Classification Rules & Keywords:
+- Assign the boolean value true if the condition is explicitly mentioned or is strongly implied by definitive radiographic signs (e.g., severe pattern, abnormal size, clear effusion).
+- Assign **false** if the condition is not mentioned, is ruled out, or is described as normal.
+- Use the specific keywords provided in the condition definitions below to guide your classification.
+
+Conditions to Classify (21 Keys):
+{
+    "perihilar_infiltrate": "True if there is evidence of perihilar pattern, infiltrate, or increased opacity around the heart base.",
+    "pneumonia": "True if there is evidence of consolidation, alveolar pattern, or a definitive diagnosis of pneumonia/bronchopneumonia.",
+    "bronchitis": "True if there is evidence of a bronchial pattern (e.g., 'tram lines,' 'donuts'), bronchial thickening, or a diagnosis of bronchitis.",
+    "interstitial": "True if there is evidence of an interstitial pattern (structured or unstructured), which includes diffuse haze or increased lung density.",
+    "diseased_lungs": "True if the report suggests any general, significant, or diffuse lung abnormality or widespread pulmonary disease (e.g., 'severe pulmonary pattern,' 'diffuse lung pathology').",
+    "hypo_plastic_trachea": "True if the trachea is explicitly described as hypoplastic or abnormally narrow/small.",
+    "cardiomegaly": "True if the report indicates any general heart enlargement, increased cardiac silhouette, or an increased vertebral heart score (VHS > 10.5).",
+    "pulmonary_nodules": "True if the report mentions pulmonary nodule(s), masses, or any focal rounded opacities (metastases).",
+    "pleural_effusion": "True if the report mentions pleural effusion, pleural fluid, or a widened pleural fissure line (fluid in the chest cavity, NOT pericardium).",
+    "rtm": "True if the report mentions redundancy of the trachealis membrane (RTM) or dorsal tracheal membrane thickening/redundancy.",
+    "focal_caudodorsal_lung": "True if there is localized (focal) abnormality (e.g., consolidation, mass, lesion) in the caudal-dorsal lung field.",
+    "focal_perihilar": "True if a localized abnormality (mass, infiltrate) is identified specifically in the perihilar region.",
+    "pulmonary_hypoinflation": "True if the report indicates decreased lung volume, hypoinflation, microcardia, or a significantly elevated diaphragm.",
+    "right_sided_cardiomegaly": "True if the report mentions specific enlargement of the right atrium (RA) or right ventricle (RV).",
+    "pericardial_effusion": "True if the report mentions fluid specifically within the pericardial sac, globoid cardiac silhouette, or cardiac tamponade.",
+    "bronchiectasis": "True if the report mentions bronchiectasis, dilated bronchi, or bronchial dilation.",
+    "pulmonary_vessel_enlargement": "True if the report describes enlarged, dilated, or prominent pulmonary arteries and/or veins (pulmonary vascular congestion).",
+    "left_sided_cardiomegaly": "True if the report mentions specific enlargement of the left atrium (LA) or left ventricle (LV).",
+    "thoracic_lymphadenopathy": "True if the report mentions enlarged thoracic, sternal, or tracheobronchial lymph nodes.",
+    "esophagitis": "True if the report mentions evidence of esophagitis, megaesophagus, or tracheal deviation due to an enlarged esophagus.",
+    "vhs_v2": "True if the report provides a calculated Vertebral Heart Score (VHS) that is above the normal range (typically > 10.5 or a specific abnormality based on VHS)."
+}
+
+Strict Output Constraint:
+- Your response must be "ONLY a single, valid JSON object" containing the keys listed above and their corresponding boolean values (`true` or `false`, lowercase).
+- Do not include ANY other text, markdown formatting (e.g., ```json), or explanation.
+
+Input Text (Radiologist Findings):
+[PASTE CONTENT OF THE 'Findings (original radiologist report)' CELL HERE]
+
+---
+Example Expected Output:
+{
+"perihilar_infiltrate": false, 
+"pneumonia": true, 
+"bronchitis": true, 
+"interstitial": false, 
+"diseased_lungs": true, 
+"hypo_plastic_trachea": false, 
+"cardiomegaly": true, 
+"pulmonary_nodules": false, 
+"pleural_effusion": false, 
+"rtm": false, 
+"focal_caudodorsal_lung": false, 
+"focal_perihilar": false, 
+"pulmonary_hypoinflation": false, 
+"right_sided_cardiomegaly": false, 
+"pericardial_effusion": false, 
+"bronchiectasis": false, 
+"pulmonary_vessel_enlargement": true, 
+"left_sided_cardiomegaly": true, 
+"thoracic_lymphadenopathy": false, 
+"esophagitis": false, 
+"vhs_v2": false
+}
