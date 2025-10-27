@@ -33,7 +33,7 @@ Strict Output Constraint:
 - Do not include ANY other text, markdown formatting (e.g., ```json), or explanation.
 
 Input Text (Radiologist Findings):
-[PASTE CONTENT OF THE 'Findings (original radiologist report)' CELL HERE]
+##
 
 ---
 Example Expected Output:
