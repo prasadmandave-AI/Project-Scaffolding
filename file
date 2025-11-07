@@ -1,0 +1,305 @@
+Practical 1 : Design an expert system using AIML
+Code:
+import aiml
+kernel = aiml.Kernel()
+kernel.learn("std-startup.xml")
+kernel.respond("load aiml b")
+while True:
+ input_text = input(">Human: ")
+ response = kernel.respond(input_text)
+ print(">Bot: "+response)
+std-startup.xml
+<aiml version="1.0.1" encoding="UTF-8">
+<category>
+<pattern> LOAD AIML B </pattern>
+<template>
+<learn>basic_chat.aiml</learn>
+</template>
+</category>
+</aiml>
+basic_chat.aiml
+<aiml version="1.0.1" encoding="UTF-8">
+<!-- basic_chat.aiml -->
+<category>
+<pattern>HELLO </pattern>
+<template>
+Well, hello User
+</template>
+</category>
+<category>
+<pattern>What Are You</pattern>
+<template>
+I’m a bot
+</template>
+</category>
+<category>
+<pattern> What do you do</pattern>
+<template>
+I’m here to annoy you
+</template>
+</category>
+<category>
+<pattern> Who I AM</pattern>
+<template>
+You are user, and you work as a Web Developer...
+</template>
+</category>
+</aiml>
+Output :
+Practical 2 : Design a bot using AIML.
+Code:
+import aiml
+kernel = aiml.Kernel()
+kernel.learn("std-startup.xml")
+kernel.respond("load b")
+while True:
+ input_text = input(">Human: ")
+ response = kernel.respond(input_text)
+ print(">Bot: "+response)
+std-startup.xml
+<aiml version="1.0.1" encoding="UTF-8">
+<category>
+<pattern> LOAD B</pattern>
+<template>
+<learn>basic_chat.aiml</learn>
+</template>
+</category>
+</aiml>
+basic_chat.aiml
+<aiml version="1.0.1" encoding="UTF-8">
+<!-- basic_chat.aiml -->
+<category>
+<pattern>HELLO </pattern>
+<template> hello User </template>
+</category>
+<category>
+<pattern>SUNDAY</pattern>
+<template> the day of the week before Monday and following
+Saturday, observed by Christian as a day of rest and religious worship;
+</template>
+</category>
+<category>
+<pattern> Monday</pattern>
+<template>
+the day start after Sunday;
+</template>
+</category>
+<category>
+<pattern> Tuesday</pattern>
+<template>
+the day start after Monday;
+</template>
+</category>
+<category>
+<pattern>Wednesday </pattern>
+<template>
+the day start after Tuesday;
+</template>
+</category>
+<category>
+<pattern>Thursday </pattern>
+<template>
+the day start after Wednesday;
+</template>
+</category>
+<category>
+<pattern> Friday</pattern>
+<template>
+the day start after Thursday;
+</template>
+</category>
+<category>
+<pattern>Saturday </pattern>
+<template>
+the day start after Friday;
+</template>
+</category>
+</aiml>
+Output :
+Practical 3 : Implement Bayes Theorem using Python.
+Code:
+P_A = float(input("Enter the Percentage of patients having liver Disease: "))
+P_B = float(input("Enter the Percentage of patients are Alcoholic: "))
+P_B_Given_A = float(input("Enter the Percentage of patients who are Alcoholic
+if they have liver Disease: "))
+P_A_Given_B = (P_B_Given_A*P_A)/P_B
+print("There are %.2f %% chances that the patients have liver Disease if they
+have alcoholic"%(P_A_Given_B))
+Ouput :
+Practical 4: Implement Conditional Probability using Python.
+Code :
+def conditional():
+ pass_stats = 0.15
+ pass_codingWStats = 0.60
+ pass_codingWOStats = 0.40
+ print("Hello")
+ prob_both = pass_stats * pass_codingWStats
+ print("The probability that applicant passes both is", round(prob_both, 3))
+ prob_coding = prob_both + ((1 - pass_stats) * pass_codingWOStats)
+ print("Probability that he/she passes coding is", round(prob_coding, 3))
+ stats_given_coding = prob_both / prob_coding
+ print("Conditional probability is", round(stats_given_coding, 3))
+conditional()
+Output :
+Practical 5: Implement Joint Probability.
+Code:
+Card_Colour= input('Enter the Colour of the card: ')
+Card_Number= input('Enter the Number of the card: ')
+# P(A) is the Probability of drawing a card with entered color
+P_A = 26/52
+# P(B) is the Probability of drawing a card with entered Number
+P_B = 4/52
+print("Probability of drawing a ",Card_Colour,' card is ',round(P_A,2))
+print("Probability of drawing a card with number ",Card_Colour,' is
+',round(P_B,2))
+P_A_AND_B = round(P_A*P_B,2)
+print("Probability of drawing ", Card_Colour, ' card with the number ',
+Card_Number, ' from a normal deck of 52 playing card is ', P_A_AND_B)
+Output :
+Practical 6 : Implementation of K-Means Clustering Using Python
+Code:
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+x = [4, 5, 10, 4, 3, 11, 14 , 6, 10, 12]
+y = [21, 19, 24, 17, 16, 25, 24, 22, 21, 21]
+######
+from sklearn.cluster import KMeans
+data = list(zip(x, y))
+inertias = []
+for i in range(1,11):
+ kmeans = KMeans(n_clusters=i)
+ kmeans.fit(data)
+ inertias.append(kmeans.inertia_)
+plt.plot(range(1,11), inertias, marker='o')
+plt.title('Elbow method')
+plt.xlabel('Number of clusters')
+plt.ylabel('Inertia')
+plt.show()
+#####
+data = list(zip(x, y))
+kmeans = KMeans(n_clusters=2)
+kmeans.fit(data)
+plt.scatter(x, y, c=kmeans.labels_)
+plt.show()
+Output :
+Practical 7: Implementation of Support Vector Machine (SVM) Algorithm
+Code:
+#Import scikit-learn dataset library
+from sklearn import datasets
+#Load dataset
+cancer = datasets.load_breast_cancer()
+# Import train_test_split function
+from sklearn.model_selection import train_test_split
+# Split dataset into training set and test set
+X_train, X_test, y_train, y_test =train_test_split(cancer.data, cancer.target,
+ test_size=0.3,random_state=120) # 70% training and 30% test
+#Import svm model
+from sklearn import svm
+#Create a svm Classifier
+clf = svm.SVC(kernel='linear') # Linear Kernel
+#Train the model using the training sets
+clf.fit(X_train, y_train)
+#Predict the response for test dataset
+y_pred = clf.predict(X_test)
+#Import scikit-learn metrics module for accuracy calculation
+from sklearn import metrics
+# Model Accuracy: how often is the classifier correct?
+print("Accuracy:",metrics.accuracy_score
+ (y_test, y_pred))
+Output:
+Practical 8: Create a AI application to implement a intelligent agent.
+Code :
+import random
+def display(room):
+ print(room)
+room = [
+ [1, 1, 0, 1],
+ [1, 0, 1, 1],
+ [1, 1, 0, 1],
+ [0, 1, 1, 1],
+]
+print("All the rooom are dirty")
+display(room)
+x =0
+y= 0
+while x < 4:
+ while y < 4:
+ room[x][y] = random.choice([0,1])
+ y+=1
+ x+=1
+ y=0
+print("Before cleaning the room I detect all of these random dirts")
+display(room)
+#starting location
+z=0 #number of rooms cleaned
+#agent code
+for x in range(4):
+ for y in range(4):
+ if room[x][y] == 1:
+ print("Vaccum in this location now,",x, y)
+ room[x][y] = 0
+ print("cleaned", x, y)
+ z+=1
+ y=0
+pro= (100-((z/16)*100))
+print("Room is clean now")
+display(room)
+print('performance=',pro,'%')
+Output :
+Practical 9 : Design an application to simulate semantic web.
+Code:
+import rdflib
+mygraph = rdflib.Graph()
+mygraph.parse("myfoaf.rdf")
+qres = mygraph.query(
+"""SELECT DISTINCT ?fname ?lname
+WHERE {
+?a foaf:knows ?b .
+?a foaf:name ?fname .
+?b foaf:name ?lname .
+}""")
+for myrow in qres:
+ print("%s knows %s" % myrow)
+myfoaf.rdf
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:admin="http://webns.net/mvcb/">
+<foaf:Person rdf:nodeID="me">
+ <foaf:name>John</foaf:name>
+ <foaf:knows>
+ <foaf:Person>
+ <foaf:name>Doe</foaf:name>
+ </foaf:Person>
+ </foaf:knows>
+ <foaf:knows>
+ <foaf:Person>
+ <foaf:name>Smith</foaf:name>
+ </foaf:Person>
+ </foaf:knows>
+</foaf:Person>
+</rdf:RDF>
+Output :
+Practical 10 : Implementation of Linear Regression Algorithm.
+Code:
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+# Step 1 :Import libraries and dataset
+datas = pd.read_csv('data.csv')
+print(datas )
+#Step 2: Dividing the dataset into 2 components
+X = datas.iloc[:, 1:2].values
+y = datas.iloc[:, 2].values
+#Step 3: Fitting Linear Regression to the dataset
+from sklearn.linear_model import LinearRegression
+lin = LinearRegression()
+lin.fit(X, y)
+plt.scatter(X, y, color = 'blue')
+plt.plot(X, lin.predict(X), color = 'red')
+plt.title('Linear Regression')
+plt.xlabel('Temperature')
+plt.ylabel('Pressure')
+plt.show()
+Output :
